@@ -23,8 +23,8 @@ function saveToTextFile(message, sender, groupName, timestamp) {
   const logsDir = path.join(__dirname, "logs");
   const filePath = path.join(logsDir, fileName);
 
-  const logLine = `${timestamp} | ${groupName} | ${sender} | ${message}\n`;
-  sendToGoogleSheet(message, sender, groupName);
+  const logLine = `${dateStr} | ${groupName} | ${sender} | ${message}\n`;
+  sendToGoogleSheet(message, groupName, dateStr);
 
   if (!fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir);
