@@ -57,9 +57,11 @@ function saveToTextFile(message, sender, groupName, timestamp) {
   client.on("message", async (msg) => {
     if (msg.from.includes("@g.us")) {
       const regex = /WO berhasil di buat dengan nomor\s*:/i;
+      const regex1 = /NO WO ICON\+\/PM\/\d{3,10}/i;
       const match = msg.body.match(regex);
+      const match1 = msg.body.match(regex1);
 
-      if (match) {
+      if (match || match1) {
         const sender = msg.author || msg.from;
         const timestamp = new Date().toISOString();
         const fullMessage = msg.body;
